@@ -42,4 +42,9 @@ difference() {
             coord1 = [0, 0, 0],
             coord2 = [(2/3)*wall_width, 0, 0]
         );
+            translate( [ 0.5*wall_width, 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
+    translate( [ hole_diameter + 1.5*wall_width, 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
+    translate( [ 0.5*wall_width, 4*hole_diameter - 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
+    translate( [ hole_diameter + 1.5*wall_width, 4*hole_diameter - 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
+
 }

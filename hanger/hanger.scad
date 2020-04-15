@@ -23,4 +23,9 @@ difference() {
     minkowski_cube();
     translate( [ hole_diameter, hole_diameter, -thickness] ) cylinder_hull();
     translate( [ hole_diameter, 3*hole_diameter, -thickness] ) rotate( [0, 0, 180] ) cylinder_hull();
+    translate( [ 0.5*wall_width, 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
+    translate( [ hole_diameter + 1.5*wall_width, 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
+    translate( [ 0.5*wall_width, 4*hole_diameter - 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
+    translate( [ hole_diameter + 1.5*wall_width, 4*hole_diameter - 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
 }
+
