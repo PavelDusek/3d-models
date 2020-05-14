@@ -42,7 +42,13 @@ difference() {
             coord1 = [0, 0, 0],
             coord2 = [(2/3)*wall_width, 0, 0]
         );
-            translate( [ 0.5*wall_width, 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
+    
+    //less sharp tip
+    translate( [ hole_diameter + wall_width - 2*rounded_corner, 1.3*hole_diameter, -thickness ] )
+    cube( [2*wall_width, wall_width, 4*thickness] );
+    
+    //small holes to tie:
+    translate( [ 0.5*wall_width, 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
     translate( [ hole_diameter + 1.5*wall_width, 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
     translate( [ 0.5*wall_width, 4*hole_diameter - 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
     translate( [ hole_diameter + 1.5*wall_width, 4*hole_diameter - 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
