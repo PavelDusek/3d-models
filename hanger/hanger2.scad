@@ -27,6 +27,7 @@ difference() {
             coord1 = [0, 0, 0],
             coord2 = [ hole_diameter+wall_width, hole_diameter+wall_width, 0 ]
         );
+    
     translate( [ hole_diameter, 3*hole_diameter, -thickness] )
         rotate( [0, 0, 180] )
             cylinder_hull(
@@ -54,3 +55,7 @@ difference() {
     translate( [ hole_diameter + 1.5*wall_width, 4*hole_diameter - 0.5*wall_width, -thickness ]) cylinder( d = (1/4)*hole_diameter, h = 4*thickness );
 
 }
+
+//even less sharp tip
+translate([2.0615*hole_diameter, hole_diameter+0.52*wall_width, 0])
+cylinder( d=(1/10)*hole_diameter, h=2*thickness, $fn=120);
