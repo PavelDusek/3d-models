@@ -94,7 +94,7 @@ difference() {
 
 clip_separation = (clip_height+0.5*phone_tooth+phone_depth+phone_strip);
 
-translate([ 0.5*monocular_diameter, monocular_diameter+phone_strip+0.1*clip_separation, 0] ) rotate( [ 0, 90, 90 ] ) clip();
-translate([ 0.5*monocular_diameter, monocular_diameter+phone_strip+1.1*clip_separation, 0] ) rotate( [ 0, 90, 90 ] ) clip();
-translate([ 0.5*monocular_diameter, monocular_diameter+phone_strip+2.1*clip_separation, 0] ) rotate( [ 0, 90, 90 ] ) clip();
-translate([ 0.5*monocular_diameter, monocular_diameter+phone_strip+3.1*clip_separation, 0] ) rotate( [ 0, 90, 90 ] ) clip();
+translate([ 0.5*monocular_diameter, monocular_diameter+phone_strip+0.1*clip_separation, phone_depth] ) rotate( [ 0, 90, 90 ] ) clip();
+translate([ 0.5*monocular_diameter, monocular_diameter+phone_strip+1.1*clip_separation, phone_depth] ) rotate( [ 0, 90, 90 ] ) clip();
+translate([ 0.5*monocular_diameter, monocular_diameter+phone_strip+2.1*clip_separation, phone_depth] ) rotate( [ 0, 90, 90 ] ) clip();
+translate([ 0.5*monocular_diameter, monocular_diameter+phone_strip+3.1*clip_separation, phone_depth] ) rotate( [ 0, 90, 90 ] ) clip();
