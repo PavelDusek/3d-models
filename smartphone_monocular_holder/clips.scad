@@ -16,26 +16,27 @@ finger_print_y = 25;
 
 clip_height = 12;
 clip_length = 5;
+clip_margin = 0.25;
 
 module clip() {
     //small tooth no 1
-    translate([0, (1/3)*phone_strip, 0])
-        cube( [(2/3)*phone_tooth, (1/9)*phone_strip, 1.2*phone_depth] );
-    translate([0, (1/3)*phone_strip-(1/18)*phone_strip, -(1/9)*phone_strip])
-        cube( [(2/3)*phone_tooth, (3/18)*phone_strip, (1/9)*phone_strip] );
+    translate([0, ((1/2)-(1/4))*phone_strip+(1/2)*clip_margin, 0])
+        cube( [phone_tooth-clip_margin, (1/9)*phone_strip, phone_depth+clip_margin] );
+    translate([0, (1/4)*phone_strip+(1/2)*clip_margin-(1/18)*phone_strip, -(1/9)*phone_strip])
+        cube( [phone_tooth-clip_margin, (3/18)*phone_strip, (1/9)*phone_strip] );
 
     //small tooth no 2
-    translate([0, (1/3)*phone_strip + (2/9)*phone_strip, 0])
-        cube( [(2/3)*phone_tooth, (1/9)*phone_strip, 1.2*phone_depth] );
-    translate([0, (1/3)*phone_strip + (2/9)*phone_strip, -(1/9)*phone_strip])
-        cube( [(2/3)*phone_tooth, (3/18)*phone_strip, (1/9)*phone_strip] );
+    translate([0, ((1/2)+(1/4)-(3/18))*phone_strip-(1/2)*clip_margin, 0])
+        cube( [phone_tooth-clip_margin, (1/9)*phone_strip, phone_depth+clip_margin] );
+    translate([0, ((1/2)+(1/4)-(3/18))*phone_strip-(1/2)*clip_margin, -(1/9)*phone_strip])
+        cube( [phone_tooth-clip_margin, (3/18)*phone_strip, (1/9)*phone_strip] );
     
     //body of the clip
-    translate( [ 0, 0, 1.2*phone_depth ] )
+    translate( [ 0, 0, phone_depth+clip_margin ] )
         cube( [ phone_depth, phone_strip, clip_height+0.5*phone_tooth] );
     
     //head of the clip
-    translate( [ 0, 0, 1.2*phone_depth+clip_height ] )
+    translate( [ 0, 0, phone_depth+clip_margin+clip_height ] )
         cube( [ phone_tooth+clip_length, phone_strip, 0.5*phone_tooth] ); 
 }
 
