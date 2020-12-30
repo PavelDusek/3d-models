@@ -1,11 +1,13 @@
 monocular_diameter = 31.5;
 monocular_depth = 10;
 
-phone_width = 75;
-phone_height = 165;
+//phone_width = 75;
+//phone_height = 165;
 phone_depth = 2.5;
 phone_strip = 15;
 phone_tooth = 5;
+phone_width = 74;
+phone_height = 164;
 
 cam_x = 22.5;
 cam_y = 12;
@@ -60,6 +62,21 @@ module finger_print() {
     cylinder( d1 = 2*finger_print_diameter, d2 = finger_print_diameter, h = 4 * max( monocular_depth, phone_depth ) );
 }
 
+module ruler() {
+    for (i = [0:2:100]) {
+        translate([(1/5)*phone_strip, -i, 0])
+            cube([(1/4)*phone_strip, 0.25, 1]);
+    }
+    for (i = [0:10:100]) {
+        translate([(1/5)*phone_strip, -i, 0])
+            cube([(1/2)*phone_strip, 0.25, 1]);
+    translate([phone_strip, -i, 0])
+        linear_extrude(1)
+            rotate([180, 0, -90])
+                text(str(i/10), size=5);
+    }
+}
+
 difference() {
     union() {
         translate([cam_x, cam_y, phone_depth-monocular_depth]) monocular();
@@ -68,3 +85,6 @@ difference() {
     translate([finger_print_x, finger_print_y, -3*max( monocular_depth, phone_depth) ])
         finger_print();
 }
+
+translate([1.155*monocular_diameter, 0.95*phone_height, -0.2*phone_depth])
+    ruler();
