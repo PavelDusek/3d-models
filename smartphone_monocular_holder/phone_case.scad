@@ -65,13 +65,13 @@ module finger_print() {
 module ruler() {
     for (i = [0:2:100]) {
         translate([(1/5)*phone_strip, -i, 0])
-            cube([(1/4)*phone_strip, 0.25, 1]);
+            cube([(1/4)*phone_strip, 0.25, 2]);
     }
     for (i = [0:10:100]) {
         translate([(1/5)*phone_strip, -i, 0])
-            cube([(1/2)*phone_strip, 0.25, 1]);
+            cube([(1/2)*phone_strip, 0.25, 2]);
     translate([phone_strip, -i, 0])
-        linear_extrude(1)
+        linear_extrude(2)
             rotate([180, 0, -90])
                 text(str(i/10), size=5);
     }
@@ -86,5 +86,5 @@ difference() {
         finger_print();
 }
 
-translate([1.155*monocular_diameter, 0.95*phone_height, -0.2*phone_depth])
+translate([1.155*monocular_diameter, 0.95*phone_height, -0.4*phone_depth])
     ruler();
