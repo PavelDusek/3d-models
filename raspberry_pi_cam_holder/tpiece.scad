@@ -30,5 +30,4 @@ module ttube() {
     }
 }
 
-//rotate( [0, 90, 0] )
-ttube();
+rotate( [0, 90+45, 0] ) ttube();
