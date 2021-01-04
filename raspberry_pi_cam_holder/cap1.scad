@@ -34,7 +34,7 @@ module cap1() {
             cube([tower_width-(2*wall), tower_width-(2*wall), tower_width]);
 
     }      
-    translate( [ -0.5*tower_width_with_margin, -0.5*tower_width_with_margin, tower_width_with_margin ] ) tower(h = tower_width_with_margin );
+    translate( [ -0.5*tower_width_with_margin, -0.5*tower_width_with_margin, tower_width_with_margin ] ) tower(h = (1/2)*tower_width_with_margin );
 }
 
 cap1();

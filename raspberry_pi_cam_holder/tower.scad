@@ -2,7 +2,7 @@ wall  = 2.5;
 tower_width = 22;
 margin = 0.5;
 tower_width_with_margin = tower_width + margin;
-height = 50;
+height = 2*tower_width_with_margin;
 
 module tower(h) {
     difference() {
