@@ -6,7 +6,7 @@ height = 10;
 tower_diagonal = sqrt(2)*tower_width;
 
 cam_platform = 25;
-no_of_star_tips = 12;
+no_of_star_tips = 8;
 
 module tower(h) {
     difference() {

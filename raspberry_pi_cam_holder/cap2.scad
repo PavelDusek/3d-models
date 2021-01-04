@@ -7,7 +7,7 @@ height = 20;
 extra_length = 5;
 
 cam_platform = 25;
-no_of_star_tips = 12;
+no_of_star_tips = 8;
 
 hole_diameter = 2;
 hole_x  =  2;
