@@ -9,12 +9,12 @@ module t(a) {
 
         translate([ 0, 0, (-1/2)*a])
         rotate([0, 0, 45]) cube([a, a, 1.5 * a]);
-        
-        translate([(-1/2)*diagonal, diagonal/2-2*a, a])
-            rotate([0, 45, 0]) cube([a, 2*a, a]);
+
+        translate([(-1/2)*diagonal, 0, a])
+            rotate([0, 45, 0]) cube([a, a, a]);
         
         translate([(-1/2)*diagonal, diagonal/2, a])
-            rotate([0, 45, 0]) cube([a, 2*a, a]);
+            rotate([0, 45, 0]) cube([a, 1.5*a, a]);
     }
 }
 
