@@ -4,7 +4,8 @@ margin = 0.5;
 tower_width_with_margin = tower_width + margin;
 height = 20;
 
-extra_length = 2;
+upper_extra_length = 1;
+lower_extra_length = 3;
 
 cam_platform = 25;
 no_of_star_tips = 8;
@@ -24,18 +25,18 @@ module star() {
 
 module cam_holder() {
     difference() {
-        cube([cam_platform, wall, cam_platform+extra_length]);
+        cube([cam_platform, wall, cam_platform+lower_extra_length+upper_extra_length]);
 
-        translate([hole_x, wall+1, hole_y+extra_length]) rotate([90, 0, 0])
+        translate([hole_x, wall+1, cam_platform-hole_y+lower_extra_length]) rotate([90, 0, 0])
             cylinder( d = hole_diameter, h = wall+2 );
 
-        translate([cam_platform-hole_x, wall+1, hole_y+extra_length]) rotate([90, 0, 0])
+        translate([cam_platform-hole_x, wall+1, cam_platform-hole_y+lower_extra_length]) rotate([90, 0, 0])
             cylinder( d = hole_diameter, h = wall+2 );
 
-        translate([hole_x, wall+1, hole_y2+extra_length]) rotate([90, 0, 0])
+        translate([hole_x, wall+1, cam_platform-hole_y2+lower_extra_length]) rotate([90, 0, 0])
             cylinder( d = hole_diameter, h = wall+2 );
 
-        translate([cam_platform-hole_x, wall+1, hole_y2+extra_length]) rotate([90, 0, 0])
+        translate([cam_platform-hole_x, wall+1, cam_platform-hole_y2+lower_extra_length]) rotate([90, 0, 0])
             cylinder( d = hole_diameter, h = wall+2 );
     }
 }
@@ -50,7 +51,7 @@ module cap2() {
             cube([tower_width, tower_width, tower_width]);
     }
 
-    translate([ (-1/2)*cam_platform, 0.5*tower_width_with_margin, tower_width_with_margin]) rotate([0, 0, 0]) cam_holder();
+    translate([ (-1/2)*cam_platform, (1/4)*tower_width_with_margin, tower_width_with_margin]) rotate([0, 0, 0]) cam_holder();
 
 }
 
