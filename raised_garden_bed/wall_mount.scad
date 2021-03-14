@@ -1,4 +1,4 @@
-rod = 25.1;
+rod = 25.4;
 
 //screw
 screw1 = 8; //width of the screw head
