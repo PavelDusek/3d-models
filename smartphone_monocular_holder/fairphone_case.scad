@@ -4,7 +4,7 @@ monocular_depth = 13;
 phone_depth = 2.5;
 phone_strip = 15;
 phone_tooth = 5;
-phone_width = 74;
+phone_width = 77;
 
 cam_x = 22.5;
 cam_y = 12;
@@ -14,7 +14,7 @@ finger_print_x = 37.5;
 finger_print_y = 25;
 
 clip_height = 12;
-clip_length = 5;
+clip_length = 3;
 clip_margin = 0.25;
 
 module monocular() {
