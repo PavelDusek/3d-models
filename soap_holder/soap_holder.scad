@@ -1,7 +1,7 @@
 rod_diameter = 20;
 saddle_diameter = 34;
 
-soap_diameter = 62;
+soap_diameter = 72;
 
 module holder() {
     difference() {
@@ -20,11 +20,16 @@ module connection() {
 }
 
 module soap() {
-    translate([0, (0.5+0.075)*soap_diameter+0.9*rod_diameter, 0])
+    difference() {
+    translate([0, (0.5+0.075)*soap_diameter+0.9*rod_diameter, -4*rod_diameter])
         difference() {
-            cylinder( d = 1.15*soap_diameter, h = 2*rod_diameter);
-            translate([0, 0, 0.15*rod_diameter]) cylinder( d = soap_diameter, h = 2*rod_diameter);
+            cylinder( d = 1.15*soap_diameter, h = 6*rod_diameter);
+            translate([0, 0, 0.15*rod_diameter]) cylinder( d = soap_diameter, h = 6*rod_diameter);
         }
+        
+            translate([-0.5*1.15*soap_diameter, 0.9*rod_diameter, 2*rod_diameter]) rotate([-45, 0, 0]) cube([1.15*soap_diameter, 30*soap_diameter, 1.15*soap_diameter]);
+
+    }
 }
 
 color([1, 0, 0]) holder();
