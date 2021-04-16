@@ -1,4 +1,9 @@
 $fn=50;
+cagediameter = 70;
+cageheight = 120;
+cagecorner = 10;
+cageslit   = 37;
+cagewall   = 5;
 
 /*******
 * CAGE *
@@ -22,34 +27,34 @@ module slit( width, height, depth, corner ) {
 }
 
 difference() {
-    capsule( radius = 35, height = 80, corner = 10 );
-    translate([0, 0, 2.5]) capsule( radius = 30, height=70, corner=5);
-    translate([0, 0, -15]) cylinder(d = (2*35)/3, h = 100 );
+    capsule(radius = cagediameter, height = cageheight, corner = cagecorner);
+    translate([0, 0, cagewall/2]) capsule( radius = (cagediameter-cagewall), height= (cageheight - 2*cagewall), corner= cagecorner/2);
+    translate([0, 0, -cageheight]) cylinder(d = (2*cagediameter)/3, h = 3*cageheight );
 
-    rotate([0, 0, (0*360)/5]) translate([0, 0, 10]) slit( width = (2*30)/3, height = 70-(2*10), depth = 50, corner = 10);
+    rotate([0, 0, (0*360)/5]) translate([0, 0, 2*cagewall]) slit( width = cageslit, height = cageheight-(6*cagewall), depth = 2*cagediameter-4*cagewall, corner = cagecorner);
 
-    rotate([0, 0, (1*360)/5]) translate([0, 0, 10]) slit( width = (2*30)/3, height = 70-(2*10), depth = 50, corner = 10);
+    rotate([0, 0, (1*360)/5]) translate([0, 0, 2*cagewall]) slit( width = cageslit, height = cageheight-(6*cagewall), depth = 2*cagediameter-4*cagewall, corner = cagecorner);
 
-    rotate([0, 0, (2*360)/5]) translate([0, 0, 10]) slit( width = (2*30)/3, height = 70-(2*10), depth = 50, corner = 10);
+    rotate([0, 0, (2*360)/5]) translate([0, 0, 2*cagewall]) slit( width = cageslit, height = cageheight-(6*cagewall), depth = 2*cagediameter-4*cagewall, corner = cagecorner);
 
-    rotate([0, 0, (3*360)/5]) translate([0, 0, 10]) slit( width = (2*30)/3, height = 70-(2*10), depth = 50, corner = 10);
+    rotate([0, 0, (3*360)/5]) translate([0, 0, 2*cagewall]) slit( width = cageslit, height = cageheight-(6*cagewall), depth = 2*cagediameter-4*cagewall, corner = cagecorner);
 
-    rotate([0, 0, (4*360)/5]) translate([0, 0, 10]) slit( width = (2*30)/3, height = 70-(2*10), depth = 50, corner = 10);
+    rotate([0, 0, (4*360)/5]) translate([0, 0, 2*cagewall]) slit( width = cageslit, height = cageheight-(6*cagewall), depth = 2*cagediameter-4*cagewall, corner = cagecorner);
 
 }
 
 /*******
 * TEXT *
 ********/
-    rotate([0, 0, 0.69*360/5-0*(360/5)]) translate([21, 0, 55]) rotate([0, 90, 0]) linear_extrude(2) text("Všechno nejlepší", size=4);
+    rotate([0, 0, 0.69*360/5-0*(360/5)]) translate([0.549*cagediameter, 0, 0.75*cageheight]) rotate([0, 90, 0]) linear_extrude(cagewall/2) text("Všechno nejlepší", size=cagewall);
 
-    rotate([0, 0, 0.69*360/5-1*(360/5)]) translate([21, 0, 55]) rotate([0, 90, 0]) linear_extrude(2) text("k narozeninám", size=4);
+    rotate([0, 0, 0.69*360/5-1*(360/5)]) translate([0.549*cagediameter, 0, 0.75*cageheight]) rotate([0, 90, 0]) linear_extrude(cagewall/2) text("k narozeninám", size=cagewall);
 
-    rotate([0, 0, 0.69*360/5-2*(360/5)]) translate([21, 0, 55]) rotate([0, 90, 0]) linear_extrude(2) text("Honzovi", size=4);
+    rotate([0, 0, 0.69*360/5-2*(360/5)]) translate([0.549*cagediameter, 0, 0.75*cageheight]) rotate([0, 90, 0]) linear_extrude(cagewall/2) text("Honzovi", size=cagewall);
 
-    rotate([0, 0, 0.69*360/5-3*(360/5)]) translate([21, 0, 55]) rotate([0, 90, 0]) linear_extrude(2) text("přeje", size=4);
+    rotate([0, 0, 0.69*360/5-3*(360/5)]) translate([0.549*cagediameter, 0, 0.75*cageheight]) rotate([0, 90, 0]) linear_extrude(cagewall/2) text("přeje", size=cagewall);
 
-    rotate([0, 0, 0.69*360/5-4*(360/5)]) translate([21, 0, 55]) rotate([0, 90, 0]) linear_extrude(2) text("Pavel", size=4);
+    rotate([0, 0, 0.69*360/5-4*(360/5)]) translate([0.549*cagediameter, 0, 0.75*cageheight]) rotate([0, 90, 0]) linear_extrude(cagewall/2) text("Pavel", size=cagewall);
 
 /********
 * BRAIN *
@@ -58,4 +63,4 @@ difference() {
 //brain from https://www.thingiverse.com/thing:2903048
 //generated according to https://github.com/miykael/3dprintyourbrain
 
-color([1, 0, 0]) translate([ 0, 0.5, 35]) scale([0.205, 0.205, 0.205]) import("brain.stl");
+//color([1, 0, 0]) translate([ 0, 0.5, 35]) scale([0.4, 0.4, 0.4]) rotate([-90, 0, 0]) import("brain.stl");
