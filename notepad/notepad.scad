@@ -2,7 +2,7 @@ $fn       = 100;
 width     =  43;
 height    =  74;
 wall      =   1;
-thickness =  18;
+thickness =  10;
 corner    =   3;
 
 module roundcube( width, height, thickness, corner ) {
