@@ -1,8 +1,8 @@
 $fn       = 100;
-width     =  43;
-height    =  75;
+width     =  44.5;
+height    =  76.5;
 wall      =   1;
-thickness =  11;
+thickness =   6;
 corner    =   3;
 
 module roundcube( width, height, thickness, corner ) {
@@ -12,7 +12,7 @@ module roundcube( width, height, thickness, corner ) {
     }
 }
 
-module notepad() {
+module lid() {
     difference() {
         roundcube(
             width = width,
@@ -27,7 +27,15 @@ module notepad() {
             thickness = thickness,
             corner = corner
         );
+        translate( [ 0.125*width, 0.125*height, -1 ] )
+        roundcube(
+            width = 0.75*width,
+            height = 0.75*height,
+            thickness = thickness+2,
+            corner = corner
+        );
+
     }
 }
 
-notepad();
+lid();
