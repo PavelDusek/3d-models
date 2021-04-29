@@ -16,7 +16,12 @@ tower_width = 22;
 margin = 0.5;
 tower_width_with_margin = tower_width + margin;
 
-module raspi_platform() {
+module screw() {
+    translate([0, 0, -10]) cylinder( h=20, d=3, center=false, $fn=30);
+    translate([0, 0, 2]) cylinder( h=20, d=7, center=false, $fn=30);
+}
+
+module raspi_platform_base() {
     //platform
     hull() {
     translate([0, 0, 0 ] )
@@ -39,7 +44,23 @@ module raspi_platform() {
         cylinder( d = holes_diameter, h = wall );
 }
 
-module tower_mount() {
+module raspi_platform() {
+    difference() {
+        union() {
+            raspi_platform_base();
+            
+            //screw mounts     
+            translate([-1/12*width, -1/12*width, 0]) cylinder( d = 1/2 * width, h = wall);
+            translate([-1/12*width, 13/12*width, 0]) cylinder( d = 1/2 * width, h = wall);
+        }
+        
+        //screw holes
+        translate([-1/12*width, -1/12*width, 0]) screw();
+        translate([-1/12*width, 13/12*width, 0]) screw();
+    }
+}
+
+module tower_mount_base() {
     color( [ 1, 1, 1 ] )
     cube([tower_width_with_margin, tower_width_with_margin, wall ] );
     
@@ -74,6 +95,16 @@ module tower_mount() {
     translate( [tower_width_with_margin, tower_width_with_margin, 0 ] )
         cube([ wall, wall, tower_width_with_margin ] );
 
+}
+
+module tower_mount() {
+    difference() {
+        tower_mount_base();
+        //screw holes
+        color([1, 0, 0])
+        translate([0.5*tower_width, 0.3*tower_width, 0]) screw();
+        translate([0.5*tower_width, 0.7*tower_width, 0]) screw();
+    }
 }
 
 raspi_platform();
