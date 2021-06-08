@@ -2,7 +2,7 @@ import openscad as o
 import math
 
 hose_diameter   =  13
-spike_height    = 150
+spike_height    = 200
 spike_thickness =  13
 irrigator_hole  =   1
 
