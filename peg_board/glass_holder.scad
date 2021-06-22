@@ -10,8 +10,8 @@ base_length = 15;
 
 disc_dist   = 37;
 
-wall        = 3;
-diameter    = 38 + wall;
+wall        = 2;
+diameter    = 40 + 2*wall;
 height      = 55;
 number_of_spirals   = 6;
 number_of_rotations = 0.5;
