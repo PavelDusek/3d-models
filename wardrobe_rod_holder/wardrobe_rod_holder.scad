@@ -1,28 +1,50 @@
+rod_height   = 19.5;
+rod_width    = 37  ;
+rod_inner    = 10  ;
+neck_height  = 50  ;
+neck_width   = 39  ;
+plate_height = 24  ;
+plate_thick  =  2.5;
+plate_dist   = 63  ;
+
 module rod() {
     hull() {
-        cylinder( r=9.5, h=10 );
-        translate([17, 0, 0]) cylinder( r=9.5, h= 10);
+        translate([-0.5*(rod_width-rod_height), 0, 0]) cylinder( d = rod_height, h = rod_inner );
+        translate([+0.5*(rod_width-rod_height), 0, 0]) cylinder( d = rod_height, h = rod_inner);
     }
 }
 
 module holder() {
-    translate([-0.5*19, 60-(0.5*20), 0]) 
     hull() {
-        cylinder( r=10, h=10 );
-        translate([19, 0, 0]) cylinder( r=10, h=10 ); 
+        translate([-0.5*rod_height, 0, 0]) cylinder( d = 1.1*rod_height, h = rod_inner );
+        translate([+0.5*rod_height, 0, 0]) cylinder( d = 1.1*rod_height, h = rod_inner ); 
     }
-    translate([-0.5*39, 0, 0]) cube([39, 50, 1]);
+    translate([-0.5 * neck_width, -neck_height, 0]) cube([neck_width, neck_height, plate_thick]);
     
+    translate([0, -neck_height, 0]) hull() {
+        translate([-0.5 * plate_dist, 0, 0]) cylinder( d = plate_height, h = plate_thick);
+        translate([+0.5 * plate_dist, 0, 0]) cylinder( d = plate_height, h = plate_thick);
+    }
+}
+
+module holder2() {
     hull() {
-        translate([-0.5*63, 0, 0]) cylinder( r=12, h=1);
-        translate([0.5*63, 0, 0])  cylinder( r=12, h=1);
+        translate([-0.5*rod_height, 0, plate_thick]) cylinder( d = 1.1*rod_height, h = rod_inner );
+        translate([+0.5*rod_height, 0, plate_thick]) cylinder( d = 1.1*rod_height, h = rod_inner );
+    }
+
+    hull() {
+        translate([-0.5* rod_height,  +0*neck_height, 0]) cylinder( d = 1.1*rod_height, h = plate_thick );
+        translate([+0.5* rod_height,  +0*neck_height, 0]) cylinder( d = 1.1*rod_height, h = plate_thick ); 
+        translate([-0.5 * plate_dist, -1*neck_height, 0]) cylinder( d = plate_height, h = plate_thick);
+        translate([+0.5 * plate_dist, -1*neck_height, 0]) cylinder( d = plate_height, h = plate_thick);
     }
 }
 
 difference() {
-    color([0, 1, 0]) holder();
-    color([1, 0, 0]) translate([-0.5*17, 60-(0.5*19)-0.75, 1]) rod();
+    holder2();
+    translate([0, 0, plate_thick+1]) rod();
     
-    translate([-0.5*63, 0, -1]) cylinder( d=4, h=3);
-    translate([0.5*63, 0, -1])  cylinder( d=4, h=3);
+    translate([-0.5 * plate_dist, -neck_height, -1]) cylinder( d=4, h = plate_thick+2);
+    translate([+0.5 * plate_dist, -neck_height, -1])  cylinder( d=4, h = plate_thick+2);
 }
