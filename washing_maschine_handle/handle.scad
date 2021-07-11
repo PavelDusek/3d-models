@@ -3,12 +3,12 @@ wall     =   2  ;
 height   =  17.5;
 height_e =   5  ;
 length   =  25  ;
-hole     =   4.1;
-slit     =   6  ;
+hole     =   4.2;
+slit     =   7  ;
 spring   =  10  ;
 handle_l =  50  ;
 handle_w = 100  ;
-$fn      =  30  ;
+$fn      =  50  ;
 
 module rod( rod_diam, rod_width ) {
     translate([0, 0.5*rod_diam, 0.5*rod_diam]) rotate([ 0, 90, 0]) cylinder( d = rod_diam, h = rod_width );
