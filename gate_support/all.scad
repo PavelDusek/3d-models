@@ -61,7 +61,7 @@ color([0, 0, 1.0]) translate([0, 0, 0.40*height]) rod(rod_width = 25);
 color([0, 0, 0.5]) translate([0, 0, 0.40*height]) rod_holder(rod_width = 25, holder_width = base);
 color([0, 0, 1.0]) translate([0, 0, 0.40*height]) rod(rod_width = 25);
 
-////half width rod holders
+//half width rod holders
 color([0.5, 0, 0.5]) translate([0, 0, 0.54*height]) rod_holder(rod_width = large_rod, holder_width = 0.5*base);
 color([1.0, 0, 1.0]) translate([0, 0, 0.54*height]) rod(rod_width = large_rod);
 
