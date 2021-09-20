@@ -14,7 +14,7 @@ bat_height    = 25;
 bat_9V_width  = 18;
 bat_9V_length = 27;
 bat_AA_diam   = 15;
-bat_AAA_diam  = 10;
+bat_AAA_diam  = 11.5;
 bat_no      =  4;
 bat_margin  =  8;
 
@@ -83,7 +83,7 @@ color([1, 0, 0])
         bat_AA();
 
     color([0, 0, 1])
-    translate([bat_AA_diam+bat_margin+0.5*bat_AAA_diam, 0.5*bat_margin+bat_9V_width+0.5*bat_margin+0.5*bat_AA_diam+i*(bat_AA_diam+0.25*bat_margin), 0.5*bat_margin+0.01])
+    translate([bat_AA_diam+0.75*bat_margin+0.5*bat_AAA_diam, 0.5*bat_margin+bat_9V_width+0.5*bat_margin+0.5*bat_AA_diam+i*(bat_AA_diam+0.25*bat_margin), 0.5*bat_margin+0.01])
         bat_AAA();
     }
 }
