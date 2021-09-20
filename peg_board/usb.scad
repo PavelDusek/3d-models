@@ -11,7 +11,7 @@ disc_dist   = 37;
 wall        =  2;
 
 usb_width   =  5;
-usb_length  = 12;
+usb_length  = 14;
 usb_height  = 12;
 usb_no      =  4;
 usb_margin  =  8;
