@@ -2,6 +2,7 @@ scale_factor = 10;
 a = scale_factor * (1 + 1/sqrt(5));
 b = scale_factor * 1;
 
+module rhombic_dodecahedron() {
 polyhedron(
   points=[
     //base points
@@ -42,3 +43,6 @@ polyhedron(
     
   ]
  );
+}
+
+translate([0, 0, -0.5*a]) rhombic_dodecahedron();
