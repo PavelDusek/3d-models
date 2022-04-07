@@ -4,8 +4,32 @@ whiteboard_height = 900;
 day_width  = whiteboard_width/7;
 day_height = whiteboard_height/16;
 
-wall      = 5;
-thickness =  4;
+wall      = 2;
+thickness =  2;
+
+magnet_height1 =  4.5;
+magnet_height2 = 12.5;
+magnet_diam    = 10;
+screw_height   = magnet_height2-magnet_height1;
+screw_diam     =  4;
+
+$fn = 30;
+
+module screw() {
+    cylinder( d = screw_diam, h = screw_height );
+}
+
+module magnet() {
+    cylinder( d = magnet_diam, h = magnet_height1+2 );
+    translate([0, 0, magnet_height1]) screw();
+}
+
+module magnet_case() {
+    difference() {
+        cylinder( d = magnet_diam+wall, h = magnet_height1+wall);
+        translate([0, 0, -1]) magnet();
+    }
+}
 
 module plate(plate_width, plate_height, plate_thickness) {
     hull() {
@@ -42,3 +66,4 @@ module day() {
 }
 
 day();
+translate([0.5*(magnet_diam+wall), 0.5*(magnet_diam+wall), 0]) magnet_case();
