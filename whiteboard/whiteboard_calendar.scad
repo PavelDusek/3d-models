@@ -65,5 +65,10 @@ module day() {
     }
 }
 
-day();
-translate([0.5*(magnet_diam+wall), 0.5*(magnet_diam+wall), 0]) magnet_case();
+
+difference() {
+    day();
+    translate([0.5*(magnet_diam+wall), day_height-0.5*(magnet_diam+wall), -1]) magnet();
+}
+
+translate([0.5*(magnet_diam+wall), day_height-0.5*(magnet_diam+wall), 0]) magnet_case();
