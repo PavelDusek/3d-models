@@ -1,7 +1,7 @@
 wall            =  2;
-screw_diam      =  5;
+screw_diam      =  6.5;
 nut_height      =  5;
-nut_diam        = 11;
+nut_diam        = 13;
 nut_radius      =  0.5 * nut_diam;
 rod_wide_diam   = 13;
 rod_narrow_diam = 11;
@@ -27,12 +27,12 @@ module nut(radius, height) {
 }
 
 module wedge( diameter ) {
-    rotate([ 0, 0, -120])
+    rotate([ 0, 0, -150])
     difference() {
         translate([0, 0, -1])
         cylinder( d = 1.5 * diameter+2, h = 1.5*diameter+2);
     
-        rotate([0, 0, 60])
+        rotate([0, 0, 90])
         translate([-diameter-1, 0, -2])
         cube([2*diameter+2, diameter+2, 1.5*diameter+4]);
     
