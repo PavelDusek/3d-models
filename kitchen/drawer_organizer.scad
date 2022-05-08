@@ -1,7 +1,7 @@
 wall            =  2;
 screw_diam      =  6.5;
-nut_height      =  5;
-nut_diam        = 13;
+nut_height      =  5.2;
+nut_diam        = 12.5;
 nut_radius      =  0.5 * nut_diam;
 rod_wide_diam   = 13;
 rod_narrow_diam = 11;
