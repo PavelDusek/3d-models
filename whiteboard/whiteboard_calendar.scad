@@ -1,4 +1,4 @@
-whiteboard_width  = 600;
+whiteboard_width  = 555;
 whiteboard_height = 900;
 
 day_width  = whiteboard_width/7;
