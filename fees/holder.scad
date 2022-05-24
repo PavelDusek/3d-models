@@ -1,15 +1,15 @@
 width                 = 89;
 height                = 90;
-thickness             =  3.5;
+thickness             =  4;
 enforcement_thickness =  1.5;
 enforcement_width     = 14;
-holder_diameter       = 80;
+holder_diameter       = 85;
 holder_hole           = 25;
-hole                  =  3;
-enforcement_hole      = 11;
+hole                  =  4.5;
+enforcement_hole      = 11.5;
 hole_position         = 12;
 holder_position       = 20;
-holder_hole_position  = 20;
+holder_hole_position  = 27;
 $fn = 30;
 
 module plate() {    
@@ -66,8 +66,12 @@ module holder() {
     
     translate([0.5*(holder_diameter+width-holder_diameter), 0, 0])
     difference() {
-        cylinder( d = holder_diameter, h = thickness );
-
+        hull() {
+            cylinder( d = holder_diameter, h = thickness );
+            translate([0, 0.15*holder_diameter, 0])
+            cylinder( d = holder_diameter, h = thickness );
+        }
+        
         translate([-0.5*holder_diameter-1, -holder_diameter-1, -1])
         cube([ holder_diameter+2, holder_diameter+2, thickness+2]);
 
@@ -82,7 +86,6 @@ plate_with_holes();
 translate([0, height - holder_position, 0])
 rotate([75, 0, 0])
 holder();
-
 
 translate([0, holder_position, 0])
 rotate([105, 0, 0])
