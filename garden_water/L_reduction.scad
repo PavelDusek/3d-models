@@ -1,12 +1,13 @@
-wide_tube_outer    = 55;
-wide_tube_inner    = 50;
-wide_tube_length   = 40;
+wide_tube_outer    = 56;
+wide_tube_inner    = 52;
+wide_tube_length   = 60;
 
-narrow_tube_outer  = 12.7;
-narrow_tube_inner  = 10;
+narrow_tube_outer  = 19.05;
+narrow_tube_inner  = 16.5;
 narrow_tube_length = 30;
 
 reduction_length   = 30;
+$fn                = 99;
 
 module wide_tube() {
     difference() {
