@@ -1,6 +1,6 @@
 //rod
 width  = 66;
-height = 41;
+height = 40.5;
 
 //holder
 length = 30;
@@ -18,7 +18,6 @@ module disc_hole() {
         cylinder(d = diam,   h = 3*thick);
     }
 }
-
 
 difference() {
     cube([length, width+2*thick, height+2*thick]);
