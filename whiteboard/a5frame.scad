@@ -1,12 +1,13 @@
-frame_width  = 148;
-frame_height = 210;
+frame_width     = 152;
+frame_height    = 217;
+frame_thickness = 5;
 
-wall      = 3;
-thickness = 3;
+wall      = 2;
+thickness = 2;
 
 magnet_height1 =  4.5;
 magnet_height2 = 12.5;
-magnet_diam    = 10;
+magnet_diam    = 10.05;
 screw_height   = magnet_height2-magnet_height1;
 screw_diam     =  4;
 nut_height     =  3.2;
@@ -112,8 +113,8 @@ module frame() {
     difference() {
         plate(frame_width, frame_height, thickness);
         
-        translate( [ wall, wall, -1 ] ) 
-        plate(frame_width - 2*wall, frame_height - 2*wall, thickness+3);
+        translate( [ frame_thickness, frame_thickness, -1 ] ) 
+        plate(frame_width - 2*frame_thickness, frame_height - 2*frame_thickness, thickness+3);
     }
 }
 
