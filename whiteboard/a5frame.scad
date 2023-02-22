@@ -13,7 +13,7 @@ screw_diam     =  4;
 nut_height     =  3.2;
 nut_diam       =  8;
 number_depth   =  1;
-number_size    =  5.5;
+number_size    =  5.1;
 nut_radius     =  0.5 * nut_diam;
 $fn            = 30;
 
