@@ -51,6 +51,67 @@ module magnet_complet() {
         nut(nut_radius, nut_height+1);
 }
 
+module A_magnet() {
+    difference() {
+        linear_extrude( magnet_height1+wall+1 )
+            text("A", size = text_size, font=text_font);
+        translate([0.732*text_size, 0.330*text_size, 0])
+            magnet_complet();
+        translate([0.225*text_size, 0.330*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module A_cover() {
+    difference() {
+        linear_extrude( screw_height+wall+1 )
+            text("A", size = text_size, font=text_font);
+        
+        translate([0.732*text_size, 0.330*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.225*text_size, 0.330*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
+
+module A_carka_magnet() {
+    difference() {
+        union() {
+            linear_extrude( magnet_height1+wall+1 )
+                text("A", size = text_size, font=text_font);
+            
+            translate([-0.15*text_size, 0.71*text_size, 0])
+            rotate([0, 0, -45])
+            linear_extrude( magnet_height1+wall+1 )
+                text("'", size = text_size, font=text_font);
+        }
+        translate([0.732*text_size, 0.330*text_size, 0])
+            magnet_complet();
+        translate([0.225*text_size, 0.330*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module A_carka_cover() {
+    difference() {
+        union() {
+            linear_extrude( screw_height+wall+1 )
+                text("A", size = text_size, font=text_font);
+
+            translate([-0.15*text_size, 0.71*text_size, 0])
+            rotate([0, 0, -45])
+            linear_extrude( screw_height+wall+1 )
+                text("'", size = text_size, font=text_font);
+            }
+        
+        translate([0.732*text_size, 0.330*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.225*text_size, 0.330*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
 module B_magnet() {
     difference() {
         linear_extrude( magnet_height1+wall+1 )
@@ -74,203 +135,6 @@ module B_cover() {
     }
 }
 
-module L_magnet() {
-    difference() {
-        linear_extrude( magnet_height1+wall+1 )
-            text("L", size = text_size, font=text_font);
-        translate([0.205*text_size, 0.93*text_size, 0])
-            magnet_complet();
-        translate([0.205*text_size, 0.07*text_size, 0])
-            magnet_complet();
-    }
-}
-
-module L_cover() {
-    difference() {
-        linear_extrude( screw_height+wall+1 )
-            text("L", size = text_size, font=text_font);
-        translate([0.205*text_size, 0.93*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-        translate([0.205*text_size, 0.07*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-    }
-}
-
-module I_carka_magnet() {
-    difference() {
-        union() {
-            linear_extrude( magnet_height1+wall+1 )
-                text("I", size = text_size, font=text_font);
-            translate([-0.40*text_size, 0.7*text_size, 0])
-            rotate([0, 0, -45])
-            linear_extrude( magnet_height1+wall+1 )
-                text("'", size = text_size, font=text_font);
-        }
-        translate([0.205*text_size, 0.07*text_size, 0])
-            magnet_complet();
-        translate([0.205*text_size, 0.93*text_size, 0])
-            magnet_complet();
-    }
-}
-
-module I_carka_cover() {
-    difference() {
-        union() {
-            linear_extrude( screw_height+wall+1 )
-                text("I", size = text_size, font=text_font);
-            translate([-0.40*text_size, 0.7*text_size, 0])
-            rotate([0, 0, -45])
-            linear_extrude( screw_height+wall+1 )
-                text("'", size = text_size, font=text_font);
-        }
-        translate([0.205*text_size, 0.07*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-        translate([0.205*text_size, 0.93*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-    }
-}
-
-module Z_hacek_magnet() {
-    difference() {
-        union() {
-            linear_extrude( magnet_height1+wall+1 )
-                text("Z", size = text_size, font=text_font);
-            translate([ 0.1*text_size, 0.1*text_size, 0])
-            linear_extrude( magnet_height1+wall+1 )
-                text("ˇ", size = text_size, font=text_font);
-        }
-        translate([0.78*text_size, 0.93*text_size, 0])
-            magnet_complet();
-        translate([0.15*text_size, 0.08*text_size, 0])
-            magnet_complet();
-    }
-}
-
-module Z_hacek_cover() {
-    difference() {
-        union() {
-            linear_extrude( screw_height+wall+1 )
-                text("Z", size = text_size, font=text_font);
-            translate([ 0.1*text_size, 0.1*text_size, 0])
-            linear_extrude( screw_height+wall+1 )
-                text("ˇ", size = text_size, font=text_font);
-        }
-        translate([0.78*text_size, 0.93*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-        translate([0.15*text_size, 0.08*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-    }
-}
-
-module O_magnet() {
-    difference() {
-        linear_extrude( magnet_height1+wall+1 )
-            text("O", size = text_size, font=text_font);
-        translate([0.15*text_size, 0.5*text_size, 0])
-            magnet_complet();
-        translate([0.94*text_size, 0.5*text_size, 0])
-            magnet_complet();
-    }
-}
-
-module O_cover() {
-    difference() {
-        linear_extrude( screw_height+wall+1 )
-            text("O", size = text_size, font=text_font);
-        translate([0.15*text_size, 0.5*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-        translate([0.94*text_size, 0.5*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-    }
-}
-
-module H_magnet() {
-    difference() {
-        linear_extrude( magnet_height1+wall+1 )
-            text("H", size = text_size, font=text_font);
-        translate([0.205*text_size, 0.54*text_size, 0])
-            magnet_complet();
-        translate([0.83*text_size, 0.54*text_size, 0])
-            magnet_complet();
-    }
-}
-
-module H_cover() {
-    difference() {
-        linear_extrude( screw_height+wall+1 )
-            text("H", size = text_size, font=text_font);
-        translate([0.205*text_size, 0.54*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-        translate([0.83*text_size, 0.54*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-    }
-}
-
-module U_magnet() {
-    difference() {
-        linear_extrude( magnet_height1+wall+1 )
-            text("U", size = text_size, font=text_font);
-        translate([0.189*text_size, 0.54*text_size, 0])
-            magnet_complet();
-        translate([0.8275*text_size, 0.54*text_size, 0])
-            magnet_complet();
-    }
-}
-
-module U_cover() {
-    difference() {
-        linear_extrude( screw_height+wall+1 )
-            text("U", size = text_size, font=text_font);
-        translate([0.189*text_size, 0.54*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-        translate([0.8275*text_size, 0.54*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-    }
-}
-
-module K_magnet() {
-    difference() {
-        linear_extrude( magnet_height1+wall+1 )
-            text("K", size = text_size, font=text_font);
-        translate([0.205*text_size, 0.10*text_size, 0])
-            magnet_complet();
-        translate([0.205*text_size, 0.90*text_size, 0])
-            magnet_complet();
-    }
-}
-
-module K_cover() {
-    difference() {
-        linear_extrude( screw_height+wall+1 )
-            text("K", size = text_size, font=text_font);
-        translate([0.205*text_size, 0.10*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-        translate([0.205*text_size, 0.90*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-    }
-}
-
-module S_magnet() {
-    difference() {
-        linear_extrude( magnet_height1+wall+1 )
-            text("S", size = text_size, font=text_font);
-        translate([0.16*text_size, 0.75*text_size, 0])
-            magnet_complet();
-        translate([0.731*text_size, 0.27*text_size, 0])
-            magnet_complet();
-    }
-}
-
-module S_cover() {
-    difference() {
-        linear_extrude( screw_height+wall+1 )
-            text("S", size = text_size, font=text_font);
-        translate([0.16*text_size, 0.75*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-        translate([0.731*text_size, 0.27*text_size, -1])
-            nut(nut_radius, 2*nut_height+1);
-    }
-}
 
 module E_magnet() {
     difference() {
@@ -326,49 +190,108 @@ module E_hacek_cover() {
     }
 }
 
-module V_magnet() {
+module H_magnet() {
     difference() {
         linear_extrude( magnet_height1+wall+1 )
-            text("V", size = text_size, font=text_font);
-        translate([0.1145*text_size, 0.93*text_size, 0])
+            text("H", size = text_size, font=text_font);
+        translate([0.205*text_size, 0.54*text_size, 0])
             magnet_complet();
-        translate([0.836*text_size, 0.93*text_size, 0])
+        translate([0.83*text_size, 0.54*text_size, 0])
             magnet_complet();
     }
 }
 
-module V_cover() {
+module H_cover() {
     difference() {
         linear_extrude( screw_height+wall+1 )
-            text("V", size = text_size, font=text_font);
-        translate([0.1145*text_size, 0.93*text_size, -1])
+            text("H", size = text_size, font=text_font);
+        translate([0.205*text_size, 0.54*text_size, -1])
             nut(nut_radius, 2*nut_height+1);
-        translate([0.836*text_size, 0.93*text_size, -1])
+        translate([0.83*text_size, 0.54*text_size, -1])
             nut(nut_radius, 2*nut_height+1);
     }
 }
 
-module T_magnet() {
+
+module I_carka_magnet() {
+    difference() {
+        union() {
+            linear_extrude( magnet_height1+wall+1 )
+                text("I", size = text_size, font=text_font);
+            translate([-0.40*text_size, 0.7*text_size, 0])
+            rotate([0, 0, -45])
+            linear_extrude( magnet_height1+wall+1 )
+                text("'", size = text_size, font=text_font);
+        }
+        translate([0.205*text_size, 0.07*text_size, 0])
+            magnet_complet();
+        translate([0.205*text_size, 0.93*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module I_carka_cover() {
+    difference() {
+        union() {
+            linear_extrude( screw_height+wall+1 )
+                text("I", size = text_size, font=text_font);
+            translate([-0.40*text_size, 0.7*text_size, 0])
+            rotate([0, 0, -45])
+            linear_extrude( screw_height+wall+1 )
+                text("'", size = text_size, font=text_font);
+        }
+        translate([0.205*text_size, 0.07*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.205*text_size, 0.93*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
+
+module K_magnet() {
     difference() {
         linear_extrude( magnet_height1+wall+1 )
-            text("T", size = text_size, font=text_font);
-        translate([0.425*text_size, 0.94*text_size, 0])
+            text("K", size = text_size, font=text_font);
+        translate([0.205*text_size, 0.10*text_size, 0])
             magnet_complet();
-        translate([0.425*text_size, 0.08*text_size, 0])
+        translate([0.205*text_size, 0.90*text_size, 0])
             magnet_complet();
     }
 }
 
-module T_cover() {
+module K_cover() {
     difference() {
         linear_extrude( screw_height+wall+1 )
-            text("T", size = text_size, font=text_font);
-        translate([0.425*text_size, 0.94*text_size, -1])
+            text("K", size = text_size, font=text_font);
+        translate([0.205*text_size, 0.10*text_size, -1])
             nut(nut_radius, 2*nut_height+1);
-        translate([0.425*text_size, 0.08*text_size, -1])
+        translate([0.205*text_size, 0.90*text_size, -1])
             nut(nut_radius, 2*nut_height+1);
     }
 }
+
+module L_magnet() {
+    difference() {
+        linear_extrude( magnet_height1+wall+1 )
+            text("L", size = text_size, font=text_font);
+        translate([0.205*text_size, 0.93*text_size, 0])
+            magnet_complet();
+        translate([0.205*text_size, 0.07*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module L_cover() {
+    difference() {
+        linear_extrude( screw_height+wall+1 )
+            text("L", size = text_size, font=text_font);
+        translate([0.205*text_size, 0.93*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.205*text_size, 0.07*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
 
 module M_magnet() {
     difference() {
@@ -392,42 +315,188 @@ module M_cover() {
     }
 }
 
+module N_magnet() {
+    difference() {
+        linear_extrude( magnet_height1+wall+1 )
+            text("N", size = text_size, font=text_font);
+        translate([0.237*text_size, 0.927*text_size, 0])
+            magnet_complet();
+        translate([0.775*text_size, 0.080*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module N_cover() {
+    difference() {
+        linear_extrude( screw_height+wall+1 )
+            text("N", size = text_size, font=text_font);
+        translate([0.237*text_size, 0.927*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.775*text_size, 0.080*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
+module O_magnet() {
+    difference() {
+        linear_extrude( magnet_height1+wall+1 )
+            text("O", size = text_size, font=text_font);
+        translate([0.15*text_size, 0.5*text_size, 0])
+            magnet_complet();
+        translate([0.94*text_size, 0.5*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module O_cover() {
+    difference() {
+        linear_extrude( screw_height+wall+1 )
+            text("O", size = text_size, font=text_font);
+        translate([0.15*text_size, 0.5*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.94*text_size, 0.5*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
+module S_magnet() {
+    difference() {
+        linear_extrude( magnet_height1+wall+1 )
+            text("S", size = text_size, font=text_font);
+        translate([0.16*text_size, 0.75*text_size, 0])
+            magnet_complet();
+        translate([0.731*text_size, 0.27*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module S_cover() {
+    difference() {
+        linear_extrude( screw_height+wall+1 )
+            text("S", size = text_size, font=text_font);
+        translate([0.16*text_size, 0.75*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.731*text_size, 0.27*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
+
+
+module T_magnet() {
+    difference() {
+        linear_extrude( magnet_height1+wall+1 )
+            text("T", size = text_size, font=text_font);
+        translate([0.425*text_size, 0.94*text_size, 0])
+            magnet_complet();
+        translate([0.425*text_size, 0.08*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module T_cover() {
+    difference() {
+        linear_extrude( screw_height+wall+1 )
+            text("T", size = text_size, font=text_font);
+        translate([0.425*text_size, 0.94*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.425*text_size, 0.08*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
+
+module U_magnet() {
+    difference() {
+        linear_extrude( magnet_height1+wall+1 )
+            text("U", size = text_size, font=text_font);
+        translate([0.189*text_size, 0.54*text_size, 0])
+            magnet_complet();
+        translate([0.8275*text_size, 0.54*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module U_cover() {
+    difference() {
+        linear_extrude( screw_height+wall+1 )
+            text("U", size = text_size, font=text_font);
+        translate([0.189*text_size, 0.54*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.8275*text_size, 0.54*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
+
+module V_magnet() {
+    difference() {
+        linear_extrude( magnet_height1+wall+1 )
+            text("V", size = text_size, font=text_font);
+        translate([0.1145*text_size, 0.93*text_size, 0])
+            magnet_complet();
+        translate([0.836*text_size, 0.93*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module V_cover() {
+    difference() {
+        linear_extrude( screw_height+wall+1 )
+            text("V", size = text_size, font=text_font);
+        translate([0.1145*text_size, 0.93*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.836*text_size, 0.93*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
+
+module Z_hacek_magnet() {
+    difference() {
+        union() {
+            linear_extrude( magnet_height1+wall+1 )
+                text("Z", size = text_size, font=text_font);
+            translate([ 0.1*text_size, 0.1*text_size, 0])
+            linear_extrude( magnet_height1+wall+1 )
+                text("ˇ", size = text_size, font=text_font);
+        }
+        translate([0.78*text_size, 0.93*text_size, 0])
+            magnet_complet();
+        translate([0.15*text_size, 0.08*text_size, 0])
+            magnet_complet();
+    }
+}
+
+module Z_hacek_cover() {
+    difference() {
+        union() {
+            linear_extrude( screw_height+wall+1 )
+                text("Z", size = text_size, font=text_font);
+            translate([ 0.1*text_size, 0.1*text_size, 0])
+            linear_extrude( screw_height+wall+1 )
+                text("ˇ", size = text_size, font=text_font);
+        }
+        translate([0.78*text_size, 0.93*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+        translate([0.15*text_size, 0.08*text_size, -1])
+            nut(nut_radius, 2*nut_height+1);
+    }
+}
+
+
+
+//A
+//translate([0*text_size, 0*text_size, 0]) A_magnet();
+//translate([1.0*text_size, 0*text_size, 0]) A_cover();
+
+//A_carka
+//translate([0*text_size, 0*text_size, 0]) A_carka_magnet();
+//translate([1.0*text_size, 0*text_size, 0]) A_carka_cover();
 
 //B
 //translate([0*text_size, 0*text_size, 0]) B_magnet();
 //translate([0.8*text_size, 0*text_size, 0]) B_cover();
-
-//L
-//translate([0.0*text_size, 0*text_size, 0]) L_magnet();
-//translate([0.8*text_size, 0*text_size, 0]) L_cover();
-
-//I_carka
-//translate([0*text_size, 0*text_size, 0]) I_carka_magnet();
-//translate([0.8*text_size, 0*text_size, 0]) I_carka_cover();
-
-//Z_hacek
-//translate([0*text_size, 0*text_size, 0]) Z_hacek_magnet();
-//translate([1.0*text_size, 0*text_size, 0]) Z_hacek_cover();
-
-//O
-//translate([0*text_size, 0*text_size, 0]) O_magnet();
-//translate([1.1*text_size, 0*text_size, 0]) O_cover();
-
-//H
-//translate([0*text_size, 0*text_size, 0]) H_magnet();
-//translate([0.85*text_size, 0*text_size, 0]) H_cover();
-
-//U
-//translate([0*text_size, 0*text_size, 0]) U_magnet();
-//translate([0.85*text_size, 0*text_size, 0]) U_cover();
-
-//K
-//translate([0*text_size, 0*text_size, 0]) K_magnet();
-//translate([0.85*text_size, 0*text_size, 0]) K_cover();
-
-//S
-//translate([0*text_size, 0*text_size, 0]) S_magnet();
-//translate([0.85*text_size, 0*text_size, 0]) S_cover();
 
 //E
 //translate([0*text_size, 0*text_size, 0]) E_magnet();
@@ -437,14 +506,50 @@ module M_cover() {
 //translate([0*text_size, 0*text_size, 0]) E_hacek_magnet();
 //translate([0.85*text_size, 0*text_size, 0]) E_hacek_cover();
 
-//V
-//translate([0*text_size, 0*text_size, 0]) V_magnet();
-//translate([1.0*text_size, 0*text_size, 0]) V_cover();
+//H
+//translate([0*text_size, 0*text_size, 0]) H_magnet();
+//translate([0.85*text_size, 0*text_size, 0]) H_cover();
+
+//I_carka
+//translate([0*text_size, 0*text_size, 0]) I_carka_magnet();
+//translate([0.8*text_size, 0*text_size, 0]) I_carka_cover();
+
+//K
+//translate([0*text_size, 0*text_size, 0]) K_magnet();
+//translate([0.85*text_size, 0*text_size, 0]) K_cover();
+
+//L
+//translate([0.0*text_size, 0*text_size, 0]) L_magnet();
+//translate([0.8*text_size, 0*text_size, 0]) L_cover();
+
+//M
+//translate([0*text_size, 0*text_size, 0]) M_magnet();
+//translate([1.0*text_size, 0*text_size, 0]) M_cover();
+
+//N
+translate([0*text_size, 0*text_size, 0]) N_magnet();
+translate([1.0*text_size, 0*text_size, 0]) N_cover();
+
+//O
+//translate([0*text_size, 0*text_size, 0]) O_magnet();
+//translate([1.1*text_size, 0*text_size, 0]) O_cover();
+
+//S
+//translate([0*text_size, 0*text_size, 0]) S_magnet();
+//translate([0.85*text_size, 0*text_size, 0]) S_cover();
 
 //T
 //translate([0*text_size, 0*text_size, 0]) T_magnet();
 //translate([1.0*text_size, 0*text_size, 0]) T_cover();
 
-//M
-translate([0*text_size, 0*text_size, 0]) M_magnet();
-translate([1.0*text_size, 0*text_size, 0]) M_cover();
+//U
+//translate([0*text_size, 0*text_size, 0]) U_magnet();
+//translate([0.85*text_size, 0*text_size, 0]) U_cover();
+
+//V
+//translate([0*text_size, 0*text_size, 0]) V_magnet();
+//translate([1.0*text_size, 0*text_size, 0]) V_cover();
+
+//Z_hacek
+//translate([0*text_size, 0*text_size, 0]) Z_hacek_magnet();
+//translate([1.0*text_size, 0*text_size, 0]) Z_hacek_cover();
