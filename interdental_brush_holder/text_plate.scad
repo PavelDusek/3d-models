@@ -17,14 +17,4 @@ module text_plate( t = "Text", t_position) {
     text(t, size = 0.15*width);
 }
 
-translate([0, 0.0*height, 0])
-text_plate("Madlenka", 0.05);
-
-translate([0, 0.3*height, 0])
-text_plate("Cecilka", 0.17);
-
-translate([0, 0.6*height, 0])
-text_plate("Šárka", 0.25);
-
-translate([0, 0.9*height, 0])
-text_plate("Pavel", 0.25);
+text_plate("text", 0.36);

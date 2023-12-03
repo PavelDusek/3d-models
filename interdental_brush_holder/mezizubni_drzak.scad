@@ -20,11 +20,23 @@ difference() {
 //body
 cube([ width, height, thickness]);
 
+//text plate holder
+color([1,1,1])
+translate([0,0.25*height-thickness, thickness])
+cube([width, thickness, thickness]);
+color([1,1,1])
+translate([0,0.5*height, thickness])
+cube([width, thickness, thickness]);
+
 //hanger for interdental brushes
 difference() {
-    translate([0, height, 0])
-    cube([ width, hook_thick, hook_height]);
-
+    union() {
+        for (angle = [0:0.1:10]) {
+            rotate([angle, 0, 0])
+            translate([0, height, 0])
+            cube([ width, hook_thick, 0.1*hook_height]);
+        }
+    }
     
     //interdental
     for (i = [0:1:5]) {
@@ -36,6 +48,6 @@ difference() {
     //mono brush
     color([0, 0, 1])
     translate([3*gap-mono, height-hook_thick, thickness])
-    cube([mono, 3*hook_thick, hook_height]);    
-
+    cube([mono, 3*hook_thick, hook_height]);
+    
 }
