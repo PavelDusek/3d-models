@@ -1,3 +1,6 @@
+include <BOSL2/std.scad>
+include <BOSL2/screws.scad>
+
 hole_diam  = 15.3;
 desk_thick = 20.0;
 wall       =  3.0;
@@ -7,7 +10,7 @@ screw_hat  = 12.0;
 screw_hat_thick = 3.0;
 screw_len  = 10.0;
 screw_dist = 19.0;
-$fn        = 30;
+$fn        = 32;
 
 module halfcylinder( h, d) {
     difference() {
@@ -22,7 +25,7 @@ module halfcylinder( h, d) {
     }
 }
 
-module screw() {
+module screw_model() {
     translate([0, 0, screw_hat_thick])
     cylinder(h = screw_len, d = screw);
     cylinder(h = screw_hat_thick, d = screw_hat);
@@ -48,7 +51,11 @@ module mount() {
 difference() {
     mount();
     
-    translate([0.26*hole_diam, 0, desk_thick+screw_dist])
+    //translate([0.26*hole_diam, 0, desk_thick+screw_dist])
+    //rotate([0, -90, 0])
+    //screw_model();
+
+    translate([-0.52*hole_diam, 0, desk_thick+screw_dist])
     rotate([0, -90, 0])
-    screw();
+    screw("1/4-20", length=screw_len, anchor=TOP, head="socket");
 }
