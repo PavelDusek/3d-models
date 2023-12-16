@@ -3,19 +3,23 @@ desk_thick = 20.0;
 wall       =  3.0;
 plate      = 50.0;
 screw      =  6.0;
-screw_hat  = 11.0;
+screw_hat  = 12.0;
 screw_hat_thick = 3.0;
 screw_len  = 10.0;
-screw_dist = 17.0;
+screw_dist = 19.0;
 $fn        = 30;
 
 module halfcylinder( h, d) {
     difference() {
         cylinder(h = h, d = d);
-        translate([0, -d-1, -1])
-        cube([2*d, 2*d+2, h+2]);
-    }
     
+        translate([0.25*d, -d-1, -1])
+        cube([2*d, 2*d+2, h+2]);
+    
+        translate([-2.25*d, -d-1, -1])
+        cube([2*d, 2*d+2, h+2]);
+
+    }
 }
 
 module screw() {
@@ -44,7 +48,7 @@ module mount() {
 difference() {
     mount();
     
-    translate([0.01, 0, desk_thick+screw_dist])
+    translate([0.26*hole_diam, 0, desk_thick+screw_dist])
     rotate([0, -90, 0])
     screw();
 }
