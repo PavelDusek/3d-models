@@ -1,6 +1,6 @@
 wall =   3;
 corner = 5;
-space =  0.4;
+space =  0.3;
 
 case_width  = 55 + 2*wall;
 case_length = 55 + 2*wall;
