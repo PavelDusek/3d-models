@@ -1,9 +1,10 @@
-case_width  = 55;
-case_length = 55;
-case_height = 35;
 wall =   3;
 corner = 5;
 space =  0.4;
+
+case_width  = 55 + 2*wall;
+case_length = 55 + 2*wall;
+case_height = 35;
 $fn =    30;
 
 
@@ -37,10 +38,10 @@ module lid() {
         translate([wall, wall, wall])
         rounded_cube(case_width+space, case_length+space, 0.25*case_height+wall, corner);
 
-        translate([case_width, wall+space, -0.0001])
+        translate([case_width, 2*wall+space, -0.0001])
         mirror([1, 0, 0])
-        linear_extrude( 3*wall ) text("Concentration", size = 6);
-        //linear_extrude( 3*wall ) text("Pexeso", size = 10);
+        linear_extrude( 3*wall ) text("Concentration", size = 6.5);
+        //linear_extrude( 3*wall ) text("Pexeso", size = 12);
     }
 }
 
