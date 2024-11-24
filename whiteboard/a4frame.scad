@@ -1,21 +1,23 @@
-frame_width     = 210 + 7;
-frame_height    = 297 + 7;
-frame_thickness = 5;
+frame_width     = 148 + 7;
+frame_height    = 210 + 7;
+frame_thickness = 10.05;
 
 wall      = 2;
 thickness = 2;
+space     = 0.2;
 
-magnet_height1 =  4.5;
+//magnet_height1 =  4.5;
+magnet_height1 =  4.0;
 magnet_height2 = 12.5;
 magnet_diam    = 10.05;
 screw_height   = magnet_height2-magnet_height1;
 screw_diam     =  4;
 nut_height     =  3.2;
 nut_diam       =  8;
-number_depth   =  1;
+number_depth   =  0.5;
 number_size    =  5.1;
 nut_radius     =  0.5 * nut_diam;
-$fn            = 30;
+$fn            = 60;
 
 module screw() {
     cylinder( d = screw_diam, h = screw_height );
@@ -112,80 +114,67 @@ module plate(plate_width, plate_height, plate_thickness) {
 module frame() {
     difference() {
         plate(frame_width, frame_height, thickness);
+      
+        translate( [ -1, frame_thickness, -1 ] ) 
+        plate(frame_width-frame_thickness+1, frame_height - 2*frame_thickness, thickness+3);
         
-        translate( [ frame_thickness, frame_thickness, -1 ] ) 
-        plate(frame_width - 2*frame_thickness, frame_height - 2*frame_thickness, thickness+3);
+        
+        translate([0, 0.5*magnet_diam+0.5*abs(frame_thickness-magnet_diam), -1]) magnet();
+        
+    translate([0, 0.5*magnet_diam+0.5*abs(frame_thickness-magnet_diam)+frame_height-frame_thickness, -1]) magnet();
+        
     }
 }
 
-module short_bar() {
-    hull() {
-        translate([0.5*wall, 0*frame_width+0.5*wall, 0])
-        cylinder(d = wall, h = thickness);
-
-        translate([1.5*wall, 0*frame_width+0.5*wall, 0])
-        cylinder(d = wall, h = thickness);
-
-        translate([0.5*wall, 1*frame_width-0.5*wall, 0])
-        cylinder(d = wall, h = thickness);
-
-        translate([1.5*wall, 1*frame_width-0.5*wall, 0])
-        cylinder(d = wall, h = thickness);
-    }
-}
-
-module long_bar() {
-    hull() {
-        translate([0.5*wall, 0*frame_height+0.5*wall, 0])
-        cylinder(d = wall, h = thickness);
-
-        translate([2*wall, 0*frame_height+0.5*wall, 0])
-        cylinder(d = wall, h = thickness);
-
-        translate([0.5*wall, 1*frame_height-0.5*wall, 0])
-        cylinder(d = wall, h = thickness);
-
-        translate([2*wall, 1*frame_height-0.5*wall, 0])
-        cylinder(d = wall, h = thickness);
-    }
-    
-    translate([0.5*(magnet_diam+wall), 0.5*(magnet_diam+wall), 0]) magnet_case();
-    
-    translate([0.5*(magnet_diam+wall), frame_height-0.5*(magnet_diam+wall), 0]) magnet_case();
-}
-
-module long_side() {
+module half_magnet_case() {
     difference() {
-        long_bar();
+        cylinder( d = magnet_diam+wall, h = magnet_height1+wall);
         
-        translate([
-            0.5*(magnet_diam+wall),
-            0.5*(magnet_diam+wall),
-            -thickness])
-        magnet();
+        translate([0, 0, -1]) magnet();
         
-        translate([
-            0.5*(magnet_diam+wall),
-            frame_height-0.5*(magnet_diam+wall),
-            -thickness])
-        magnet();
-    
+        translate([-5*magnet_diam, -2*magnet_diam, -1])
+        cube( [ 5*magnet_diam, 5*magnet_diam, 5*magnet_diam]);
     }
 }
 
-long_side();
-/*
-difference() {
-    frame();
+module large_case() {
+    difference() {
+        cylinder( d = magnet_diam+2*wall, h = magnet_height1+2*wall);
+        translate([0, 0, -1]) cylinder( d = magnet_diam+wall+space, h = magnet_height1+wall+1);
+        translate([0, 0, -1]) magnet();
 
-    translate([0.5*(magnet_diam+wall), 0.5*(magnet_diam+wall), 0]) magnet();
-    translate([frame_width-0.5*(magnet_diam+wall), frame_height-0.5*(magnet_diam+wall), 0]) magnet();
+    //slit for frame
+    translate([-1*(magnet_diam+2*wall), -0.5*frame_thickness, -1])
+    cube([2*(magnet_diam+2*wall), frame_thickness, thickness+1]);
+
+    }
+    
 }
 
+module large_cap() {
+    difference() {
+        cylinder( d = magnet_diam+2*wall, h = 2*nut_height+wall+number_depth);
+        
+        translate([0, 0, -1]) nut(nut_radius, 2*nut_height+1);
+        
+        translate([
+            -0.75*(magnet_diam+wall-number_size),
+            -0.35*(magnet_diam+wall-number_size),
+            2*nut_height+wall
+        ]) number_plate("XIII");
+    }
+}
 
-translate([0.5*(magnet_diam+wall), 0.5*(magnet_diam+wall), 0]) magnet_case();
-translate([frame_width-0.5*(magnet_diam+wall), frame_height-0.5*(magnet_diam+wall), 0]) magnet_case();
-*/
+color([0, 1, 0])
+frame();
 
-//translate([magnet_diam+wall, magnet_diam+wall, 0])
-//number("XIII");
+translate([0, 0.5*magnet_diam+0.5*abs(frame_thickness-magnet_diam), 0])
+half_magnet_case();
+
+translate([0, 0.5*magnet_diam+0.5*abs(frame_thickness-magnet_diam)+frame_height-frame_thickness, 0])
+half_magnet_case();
+
+translate([10, 20, 0]) large_case();
+translate([30, 20, 0]) large_cap();
+translate([10, 40, 0]) large_case();
+translate([30, 40, 0]) large_cap();
