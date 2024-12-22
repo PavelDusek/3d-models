@@ -1,6 +1,11 @@
-tablet_width     = 127;
-tablet_height    = 226;
-tablet_thickness =   9;
+//tablet_width     = 127;
+//tablet_height    = 226;
+//tablet_thickness =   9;
+
+tablet_width     = 131;
+tablet_height    = 230;
+tablet_thickness =  12;
+
 thickness        =   2.5;
 corner           =   4;
 $fn              =  30;
@@ -27,13 +32,6 @@ module holder() {
             corner = corner
         );
   
-        //slit for tablet
-        translate([thickness, -thickness, thickness])
-            cube([
-                tablet_width,
-                tablet_height+2*thickness,
-                tablet_thickness
-            ]);
 
         //slit to view screen
         translate([2*thickness, 2*thickness, tablet_thickness])
@@ -43,9 +41,17 @@ module holder() {
                 tablet_thickness
             ]);
 
-        //slit for buttons
-        translate([ tablet_width-thickness, 0.5*tablet_height, thickness])
-        rounded_cube(4*thickness, 0.5*tablet_height, tablet_thickness, corner);        
+        //slit for tablet
+        translate([-thickness, thickness, thickness])
+            cube([
+                tablet_width+2*thickness,
+                tablet_height,
+                tablet_thickness
+            ]);
+    
+        //slit for charging
+        translate([ 0.25*tablet_width, tablet_height-thickness, thickness])
+        rounded_cube(0.5*tablet_width, 4*thickness, tablet_thickness, corner);        
         
         //holes for string attachmentt
         color([1, 0, 0])
