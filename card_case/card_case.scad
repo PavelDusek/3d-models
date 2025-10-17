@@ -1,8 +1,18 @@
-width  = 67;
-length = 92;
-height = 15;
+//// Empiric game:
+//width  = 67;
+//length = 92;
+//height = 15;
+//wall   =  1;
+//slit   =  1;
+//name   = "EmpiricGame";
+
+// Recepty:
+width  = 60;
+length = 90;
+height = 25;
 wall   =  1;
 slit   =  1;
+name   = "Recepty";
 
 module rounded_cube(width, length, height, corner) {
     hull() {
@@ -62,7 +72,7 @@ module lid() {
         linear_extrude(3*wall)
         translate([3*wall, 20*wall,-1])
         rotate([180, 0, 0])
-        text("EmpiricGame", size=8);
+        text(name, size=8);
             
     }
 }
