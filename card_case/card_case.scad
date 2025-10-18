@@ -10,34 +10,35 @@
 width  = 60;
 length = 90;
 height = 25;
-wall   =  1;
+wall   =  1.5;
 slit   =  1;
 name   = "Recepty";
+$fn    = 60;
 
 module rounded_cube(width, length, height, corner) {
     hull() {
         translate([ 0*width+1*corner, 0*length+1*corner, 0*height+1*corner])
             sphere( r = corner );
 
-        translate([ 1*width-0*corner, 0*length+1*corner, 0*height+1*corner ])
+        translate([ 1*width-1*corner, 0*length+1*corner, 0*height+1*corner ])
             sphere( r = corner );
 
-        translate([ 0*width+1*corner, 1*length-0*corner, 0*height+1*corner ])
+        translate([ 0*width+1*corner, 1*length-1*corner, 0*height+1*corner ])
             sphere( r = corner );
 
-        translate([ 1*width-0*corner, 1*length-0*corner, 0*height+1*corner ])
+        translate([ 1*width-1*corner, 1*length-1*corner, 0*height+1*corner ])
             sphere( r = corner );
 
-        translate([ 0*width+1*corner, 0*length+1*corner, 1*height-0*corner ])
+        translate([ 0*width+1*corner, 0*length+1*corner, 1*height-1*corner ])
             sphere( r = corner );
 
-        translate([ 1*width-0*corner, 0*length+1*corner, 1*height-0*corner ])
+        translate([ 1*width-1*corner, 0*length+1*corner, 1*height-1*corner ])
             sphere( r = corner );
 
-        translate([ 0*width+1*corner, 1*length-0*corner, 1*height-0*corner ])
+        translate([ 0*width+1*corner, 1*length-1*corner, 1*height-1*corner ])
             sphere( r = corner );
 
-        translate([ 1*width-0*corner, 1*length-0*corner, 1*height-0*corner ])
+        translate([ 1*width-1*corner, 1*length-1*corner, 1*height-1*corner ])
             sphere( r = corner );
     }
 }
@@ -51,7 +52,7 @@ module case() {
             height+wall,
             wall
         );
-        
+    
         translate([wall, wall, wall])
         cube([width, length, height+1]);
     }
