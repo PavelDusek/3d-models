@@ -11,7 +11,7 @@ width  = 60;
 length = 90;
 height = 25;
 wall   =  1.5;
-slit   =  0.4;
+slit   =  0.3;
 name   = "Recepty";
 $fn    = 60;
 
