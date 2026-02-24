@@ -1,11 +1,11 @@
 led_width = 16;
 led_height = 4;
-screw_diam = 4;
-screw_head = 7;
+screw_diam = 2;
+screw_head = 3.5;
 screw_head_height = 4;
 
 thickness = 3;
-radius_thickness = 4;
+radius_thickness = 3;
 width = 10;
 $fn = 30;
 
