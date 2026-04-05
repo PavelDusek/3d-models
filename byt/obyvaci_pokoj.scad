@@ -125,27 +125,27 @@ translate([-tenka, -tlusta, 0])
 cube([tenka, zapad  + tenka + tlusta, vyska]);
 
 
-//nabytek
-//police1
-color("gray")
-translate([jih-police_tloustka-1, police_pozice, 0])
-cube([police_tloustka, police_sirka, police_vyska]);
-
-//police2
-color("gray")
-translate([jih-police_tloustka-1, police_pozice+1+police_sirka, 0])
-cube([police_tloustka, police_sirka, police_vyska]);
-
-//akvarium
-color("blue")
-translate([jih-akvarium_tloustka-1, vychod-akvarium_delka-1, 0])
-cube([akvarium_tloustka, akvarium_delka, akvarium_vyska]);
-
-//pracovni_deska
-color("brown")
-translate([sever1+tenka, vychod-pracovni_deska_hloubka-1, akvarium_vyska])
-cube([pracovni_deska_sirka, pracovni_deska_hloubka, 2]);
-
-//gauc
-translate([ jih - 1 - gauc_B_delka, vychod - akvarium_delka - 10 - gauc_A_delka-gauc_B_sirka, 0])
-gauc();
+////nabytek
+////police1
+//color("gray")
+//translate([jih-police_tloustka-1, police_pozice, 0])
+//cube([police_tloustka, police_sirka, police_vyska]);
+//
+////police2
+//color("gray")
+//translate([jih-police_tloustka-1, police_pozice+1+police_sirka, 0])
+//cube([police_tloustka, police_sirka, police_vyska]);
+//
+////akvarium
+//color("blue")
+//translate([jih-akvarium_tloustka-1, vychod-akvarium_delka-1, 0])
+//cube([akvarium_tloustka, akvarium_delka, akvarium_vyska]);
+//
+////pracovni_deska
+//color("brown")
+//translate([sever1+tenka, vychod-pracovni_deska_hloubka-1, akvarium_vyska])
+//cube([pracovni_deska_sirka, pracovni_deska_hloubka, 2]);
+//
+////gauc
+//translate([ jih - 1 - gauc_B_delka, vychod - akvarium_delka - 10 - gauc_A_delka-gauc_B_sirka, 0])
+//gauc();
