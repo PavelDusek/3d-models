@@ -14,7 +14,7 @@ module holder() {
     hull() {
         cylinder(h = led_height + thickness, r = screw_head+radius_thickness);
 
-        translate([led_width+screw_head+radius_thickness, 0, 0 ])
+        translate([led_width+0.5*radius_thickness, 0, 0 ])
         cylinder(h = led_height + thickness, r = screw_head+radius_thickness);
     }
 }
@@ -39,6 +39,4 @@ difference() {
     translate([-0.5*screw_head-radius_thickness, 0, 0])
     screw();
     
-    translate([led_width+0.5*screw_head+radius_thickness, 0, 0])
-    screw();
 }
